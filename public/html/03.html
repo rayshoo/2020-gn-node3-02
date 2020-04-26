@@ -1,0 +1,86 @@
+<script>
+const str = "Hello World";
+const result = str.indexOf('World');
+console.log(result);
+console.log(str.startsWith('Hello'));
+console.log(str.endsWith('World'));
+console.log(str.includes('ello'));
+
+/* ES5 객체 */
+/* IIFE 즉시 실행함수 */
+function init()
+{
+    console.log('hi');
+}
+init();
+(function(){
+    console.log('hi');
+})();
+
+const Obj = (function(){
+    function Obj(_fname, _lname)
+    {
+        this.name = _fname;
+        this.lname = _lname;
+    }
+    Obj.prototype.fullName = function(){
+        return this.fname + ' ' + this.lname;
+    }
+    return Obj;
+})();
+const obj = new Obj('덕규', '임');
+console.log(obj);
+console.log(obj.name);
+
+/* ES6 객체 */
+class Obj2
+{
+    constructor(_fname, _lname)
+    {
+        this.fname = _fname;
+        this.lname = _lname;
+    }
+    fullName()
+    {
+        return `당신의 이름은 ${this.lname} ${this.fname}`
+    }
+}
+const obj2 = new Obj2('덕규', '임');
+console.log(obj2.fullName());
+
+/////////////////////////////////////////
+const name = '임덕규';
+const age = 25;
+
+const user = {
+    name : name,
+    age : age,
+    fullName : function()
+    {
+        console.log(this);
+    }
+};
+const user1 = {
+    name, age, //이름 같으면 생략 가능
+    fullName()
+    {
+        console.log(this);
+    },
+    fullName2 : ()=>{
+        console.log(this);
+    }
+}
+// console.log(user);
+// console.log(user1);
+console.clear();
+user.fullName();
+user1.fullName();
+user1.fullName2();
+
+/*const fullName = user.fullName;
+const fullName2 = user1.fullName;
+const fullName3 = user1.fullName2;*/
+
+const {fullName, fullName2} = user1; // 객체안의 함수를 전역변수로 뺌
+fullName();
+</script>

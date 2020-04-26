@@ -1,0 +1,61 @@
+<script>
+/* Array, Object, [Set, WeakSet, Map, WeakMap] */
+const set = new Set();
+set.add('A');
+set.add('B');
+set.add('C');
+set.add('B'); // 배열과 비슷하면서 중복 데이터는 안넣음
+console.log(set);
+
+let index = 0;
+set.forEach((v)=>{
+    console.log(v, index++);
+})
+
+for(var i of set)
+{
+    console.log(i);
+}
+
+const map = new Map();
+map.set(0, 'A');
+map.set('가', 'B');
+map.set('Z', 'AB');
+map.set('W', ()=>{console.log('하이')});
+
+console.log(map);
+console.log(map.size);
+for(var [k,v] of map.entries())
+{
+    console.log(k, v);
+}
+
+// const obj = ['가','나','다','라','마'];
+// for(var i in obj)
+// {
+//     console.log(i);
+// }
+// for(var i of obj)
+// {
+//     console.log(i);
+// }
+
+/* WeakSet과 WeakMap 은 객체만 저장된다. */
+const weakSet = new WeakSet();
+weakSet.add([1,2]);
+weakSet.add({
+    a : 1,
+    b : 2
+});
+weakSet.add(()=>{});
+
+console.log(weakSet);
+
+console.clear();
+const set2 = new Set();
+set2.add('A');
+set2.add('B');
+console.log(set2.has('B'));
+console.log(set2.has('C'));
+
+</script>
